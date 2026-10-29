@@ -8,167 +8,276 @@
 
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+:root {
+    --purple: #8b5cf6;
+    --deep-purple: #5b21b6;
+    --pink: #f9a8d4;
+    --cream: #fffaf5;
+    --text: #453451;
 }
 
 body {
-  font-family: Georgia, serif;
-  background: linear-gradient(135deg, #fff5fb, #eee5ff, #fffaf5);
-  color: #49365e;
-  line-height: 1.8;
-  text-align: center;
+    font-family: Georgia, "Times New Roman", serif;
+    background: linear-gradient(135deg, #fff7fc, #f1eaff, #fffaf2);
+    color: var(--text);
+    text-align: center;
+    overflow-x: hidden;
+    line-height: 1.7;
 }
 
 header {
-  padding: 45px 20px 25px;
+    padding: 55px 18px 35px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    color: var(--purple);
+    margin-bottom: 14px;
 }
 
 h1 {
-  color: #9257b8;
-  font-size: clamp(2rem, 7vw, 3rem);
-  margin-bottom: 10px;
+    font-size: clamp(34px, 8vw, 55px);
+    color: var(--deep-purple);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    max-width: 540px;
+    margin: auto;
+    font-size: 16px;
+    color: #765f83;
+}
+
+section {
+    width: min(900px, 92%);
+    margin: 0 auto 35px;
+    padding: 30px 22px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.76);
+    box-shadow: 0 10px 35px rgba(91,33,182,0.08);
 }
 
 h2 {
-  color: #925fb4;
-  margin-bottom: 15px;
+    color: var(--deep-purple);
+    font-size: 27px;
+    margin-bottom: 18px;
 }
 
 p {
-  margin: 12px 0;
-}
-
-.container {
-  width: 92%;
-  max-width: 800px;
-  margin: auto;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #ead9fa;
-  border-radius: 22px;
-  padding: 25px;
-  margin: 22px 0;
-  box-shadow: 0 8px 25px rgba(130, 80, 160, 0.1);
+    margin-bottom: 14px;
 }
 
 button {
-  background: #a878cf;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 13px 22px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin: 10px 5px;
-  font-family: inherit;
+    border: none;
+    border-radius: 30px;
+    padding: 13px 23px;
+    background: var(--purple);
+    color: white;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
 button:hover {
-  background: #8653ad;
+    background: var(--deep-purple);
+    transform: translateY(-2px);
 }
 
 .envelope {
-  font-size: 95px;
-  cursor: pointer;
-  display: inline-block;
-  animation: float 2s infinite ease-in-out;
-}
-
-#surprise {
-  display: none;
-  animation: appear 1s ease;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.gallery-item {
-  background: #fff5fb;
-  padding: 8px;
-  border-radius: 18px;
-  border: 1px solid #ead9fa;
-  box-shadow: 0 5px 15px rgba(130, 80, 160, 0.1);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  display: block;
-  border-radius: 13px;
-}
-
-.caption {
-  font-size: 0.95rem;
-  padding: 8px 2px;
-  color: #8653ad;
-}
-
-.hidden-message {
-  display: none;
-  background: #fff5fb;
-  border-radius: 15px;
-  padding: 18px;
-  margin-top: 10px;
-  text-align: left;
-}
-
-footer {
-  padding: 30px 15px 45px;
-  color: #8c69a3;
-}
-
-.heart {
-  color: #d978ae;
-  font-size: 1.2rem;
+    width: 145px;
+    height: 100px;
+    background: #d8c4ff;
+    margin: 25px auto;
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 43px;
+    box-shadow: 0 8px 20px #bba0eb55;
+    animation: float 2.5s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+#letter {
+    display: none;
+    max-width: 620px;
+    margin: 20px auto 0;
+    text-align: left;
+    padding: 23px;
+    background: #fff7fc;
+    border: 1px solid #eadcff;
+    border-radius: 18px;
+}
+
+#letter.show {
+    display: block;
+    animation: appear 0.6s ease;
 }
 
 @keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 480px) {
-  .card {
-    padding: 20px 15px;
-  }
+.message-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+}
 
-  .gallery {
-    grid-template-columns: 1fr;
-  }
+.message-card {
+    padding: 20px 14px;
+    border: 1px solid #eadcff;
+    background: linear-gradient(145deg, #fff, #faf3ff);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-  .gallery-item img {
-    height: auto;
-    max-height: 400px;
-    object-fit: contain;
-  }
+.message-card:hover {
+    transform: translateY(-4px);
+}
+
+.message-card h3 {
+    color: var(--deep-purple);
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.message-card .hidden-message {
+    display: none;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.message-card.open .hidden-message {
+    display: block;
+    animation: appear 0.4s ease;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 17px;
+    background: #f0e7fa;
+    box-shadow: 0 5px 15px #5b21b615;
+}
+
+.gallery img:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 600px;
+    justify-self: center;
+}
+
+.video-box {
+    width: 100%;
+    max-width: 650px;
+    margin: 22px auto 0;
+}
+
+video {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+    background: #24172d;
+    box-shadow: 0 10px 28px #5b21b625;
+}
+
+.video-note {
+    font-size: 14px;
+    color: #80698e;
+    margin-top: 12px;
+}
+
+.prayer {
+    background: linear-gradient(135deg, #f5edff, #fff6fb);
+}
+
+.prayer p {
+    font-style: italic;
+}
+
+.signature {
+    color: var(--deep-purple);
+    font-weight: bold;
+    font-size: 19px;
+    margin-top: 22px;
+}
+
+footer {
+    padding: 20px 15px 40px;
+    font-size: 13px;
+    color: #8b7895;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    z-index: 10;
+    animation: rise linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes rise {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.8; }
+    to {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 520px) {
+    header {
+        padding-top: 42px;
+    }
+
+    section {
+        padding: 25px 16px;
+    }
+
+    .message-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery img,
+    .gallery img:last-child:nth-child(odd) {
+        grid-column: auto;
+        height: auto;
+        max-height: 420px;
+        aspect-ratio: 4 / 3;
+    }
 }
 </style>
 </head>
@@ -176,271 +285,220 @@ footer {
 <body>
 
 <header>
-  <p>💜 A LITTLE SURPRISE MADE WITH LOVE 💜</p>
-  <h1>For Betty 🌷</h1>
-  <p>Elizabeth, this little corner of the internet is specially for you.</p>
-</header>
-
-<main class="container">
-
-  <section class="card" id="welcome">
-    <h2>Someone Has a Message for You 💌</h2>
-
-    <p>Dear Betty,</p>
-
-    <p>
-      Someone has prepared something special to remind you
-      how loved, valued, and precious you are.
+    <p class="eyebrow">A Little Surprise Made With Love</p>
+    <h1>For Betty 💜</h1>
+    <p class="subtitle">
+        A little reminder that you are special, you are loved,
+        and beautiful things are still ahead of you.
     </p>
 
-    <p>Tap the envelope to open your surprise.</p>
+    <div class="envelope">💌</div>
 
-    <div
-      class="envelope"
-      onclick="openLetter()"
-      role="button"
-      tabindex="0"
-      aria-label="Open your surprise"
-      onkeydown="if(event.key==='Enter'||event.key===' '){openLetter()}"
-    >💌</div>
+    <button onclick="openLetter()">Open Your Letter 💜</button>
 
-    <br>
+    <div id="letter">
+        <h2>Dear Betty, ❤️</h2>
 
-    <button onclick="openLetter()">Open My Surprise 💜</button>
-  </section>
+        <p>
+            Sometimes, life takes us through seasons that test our patience,
+            our courage, and our faith. But never forget that your present
+            situation does not determine your future.
+        </p>
 
-  <div id="surprise">
+        <p>
+            As you continue your journey into higher institution, remember
+            that you carry so much potential within you. Every little step
+            counts, every lesson matters, and every effort you make is
+            building something beautiful.
+        </p>
 
-    <section class="card">
-      <h2>🌷 The Beginning of Something Great 🌷</h2>
+        <p>
+            Don't be afraid of starting small. Don't compare your journey
+            with anybody else's. Keep learning, keep believing, and keep
+            becoming the wonderful person you were created to be.
+        </p>
 
-      <p>Dear Betty, our precious Elizabeth,</p>
+        <p>
+            Whenever things feel difficult, remember that difficult days
+            do not last forever. You have so much ahead of you, Betty.
+            Keep your head up and your heart hopeful. 💜
+        </p>
 
-      <p>
-        We want you to know that you are loved, appreciated,
-        and capable of becoming everything you dream of.
-        Never allow a difficult day to convince you that
-        your future is not beautiful.
-      </p>
+        <p>
+            This little website is a reminder that someone took time to
+            celebrate you, encourage you, and wish you well.
+        </p>
 
-      <p>
-        You are still growing, learning, and becoming.
-        Every new experience is an opportunity to discover
-        the strength and wonderful potential God has placed in you.
-      </p>
+        <p><strong>With love,</strong><br>
+        Aunty Yetunde & Bro Triumph ❤️</p>
+    </div>
+</header>
 
-      <p>
-        As you prepare for the next chapter of your life,
-        especially your journey into higher institution,
-        remember that you do not have to know everything today.
-        Take things one step at a time, keep learning,
-        and never be afraid to ask questions.
-      </p>
+<section>
+    <h2>Little Messages For You 💌</h2>
+    <p>Tap each card to discover a special message.</p>
 
-      <p>
-        We believe in you, Betty. Keep your head up,
-        protect your beautiful heart, and never stop trying.
-      </p>
+    <div class="message-grid">
 
-      <p><strong>You have a beautiful future ahead of you. 💜</strong></p>
-    </section>
-
-    <section class="card">
-      <h2>📸 Our Beautiful Memories 📸</h2>
-
-      <p>
-        Every picture holds a memory, and every memory
-        is a little reminder of the people and moments
-        that make life beautiful.
-      </p>
-
-      <p>
-        Betty, we hope these pictures bring a smile
-        to your face whenever you visit this page. 💗
-      </p>
-
-      <div class="gallery">
-
-        <div class="gallery-item">
-          <img
-            src="images.jpg"
-            alt="A special memory"
-            loading="lazy"
-          >
-          <p class="caption">A memory to treasure 💜</p>
+        <div class="message-card" onclick="toggleCard(this)">
+            <h3>🌷 A Reminder</h3>
+            <p>Tap to open</p>
+            <div class="hidden-message">
+                Betty, never underestimate yourself. You are capable of
+                learning, growing, and achieving more than you can imagine.
+                Keep showing up for yourself.
+            </div>
         </div>
 
-        <div class="gallery-item">
-          <img
-            src="image2.jpg"
-            alt="Another beautiful memory"
-            loading="lazy"
-          >
-          <p class="caption">Beautiful moments 🌷</p>
+        <div class="message-card" onclick="toggleCard(this)">
+            <h3>🎓 Your Future</h3>
+            <p>Tap to open</p>
+            <div class="hidden-message">
+                Your education is an investment in your future. Be patient
+                with yourself, stay focused, and remember that progress is
+                progress, no matter how small.
+            </div>
         </div>
 
-        <div class="gallery-item">
-          <img
-            src="image3.png"
-            alt="A precious memory"
-            loading="lazy"
-          >
-          <p class="caption">Always worth remembering ❤️</p>
+        <div class="message-card" onclick="toggleCard(this)">
+            <h3>💜 When You're Tired</h3>
+            <p>Tap to open</p>
+            <div class="hidden-message">
+                Rest when you need to, breathe when things get overwhelming,
+                and remember that you don't have to figure everything out
+                in one day. One step at a time.
+            </div>
         </div>
 
-      </div>
+        <div class="message-card" onclick="toggleCard(this)">
+            <h3>✨ Never Forget</h3>
+            <p>Tap to open</p>
+            <div class="hidden-message">
+                You matter. Your dreams matter. Your happiness matters.
+                May you always find reasons to smile, courage to continue,
+                and people who genuinely want to see you succeed.
+            </div>
+        </div>
 
-      <p>
-        <em>
-          May the beautiful moments of today become
-          wonderful stories to tell tomorrow.
-        </em>
-      </p>
-    </section>
+    </div>
+</section>
 
-    <section class="card">
-      <h2>💌 Little Notes Just for You</h2>
+<section>
+    <h2>Our Beautiful Memories 📸</h2>
+    <p>Some moments deserve a special place.</p>
 
-      <p>Tap each button to reveal your message.</p>
+    <div class="gallery">
+        <img src="images.jpg" alt="Beautiful memory one" loading="lazy">
 
-      <button onclick="toggleNote('note1')">
-        When You Feel Tired 🌷
-      </button>
+        <img src="image2.jpg" alt="Beautiful memory two" loading="lazy">
 
-      <div class="hidden-message" id="note1">
-        <p>
-          Rest when you need to, Betty. You don't have to
-          solve everything in one day. Taking a break doesn't
-          mean you're giving up. Gather your strength and try again.
-        </p>
-      </div>
+        <img src="image3.png" alt="Beautiful memory three" loading="lazy">
+    </div>
+</section>
 
-      <button onclick="toggleNote('note2')">
-        When You Doubt Yourself ✨
-      </button>
+<section>
+    <h2>A Little Video For You 🎬💜</h2>
 
-      <div class="hidden-message" id="note2">
-        <p>
-          You are more capable than you sometimes realise.
-          Don't compare your journey with anyone else's.
-          Your pace is your pace, and your story is still unfolding.
-        </p>
-      </div>
+    <p>
+        Because some memories are even more beautiful when they move.
+        Sit back, smile, and enjoy your little surprise. ❤️
+    </p>
 
-      <button onclick="toggleNote('note3')">
-        For Your School Journey 📚
-      </button>
+    <div class="video-box">
+        <video controls playsinline preload="metadata">
+            <source src="betty.mp4" type="video/mp4">
+            Your browser does not support video playback.
+            Please try opening this page in another browser.
+        </video>
+    </div>
 
-      <div class="hidden-message" id="note3">
-        <p>
-          May your mind be sharp, your determination strong,
-          and your efforts fruitful. Study consistently,
-          choose good friends, and remember why you started.
-          Your dreams are worth working for.
-        </p>
-      </div>
+    <p class="video-note">
+        Tap the play button to watch your video. 🎥
+    </p>
+</section>
 
-      <button onclick="toggleNote('note4')">
-        A Reminder of Love 💗
-      </button>
+<section class="prayer">
+    <h2>A Prayer For Elizabeth 🙏🏽💜</h2>
 
-      <div class="hidden-message" id="note4">
-        <p>
-          You matter. Your feelings matter. Your dreams matter.
-          You don't have to be perfect to deserve love,
-          kindness, encouragement, and support.
-        </p>
-      </div>
-    </section>
+    <p>
+        Heavenly Father, thank You for the life of Elizabeth.
+        Thank You for the gift of another day and for the wonderful
+        plans You have for her future.
+    </p>
 
-    <section class="card">
-      <h2>🙏 A Prayer for Elizabeth</h2>
+    <p>
+        As she continues her educational journey, please grant her wisdom,
+        understanding, strength, good health, and favour. Let her efforts
+        produce beautiful results. Give her peace whenever she feels
+        worried, courage whenever she feels afraid, and hope whenever
+        the road ahead seems uncertain.
+    </p>
 
-      <p>
-        Heavenly Father, thank You for Betty and for the gift
-        of her life. Please guide her steps and give her wisdom
-        as she enters new seasons of growth and learning.
-      </p>
+    <p>
+        May the doors meant for her open at the right time. Surround her
+        with genuine people, protect her from harm, and help her grow into
+        everything You have created her to be.
+    </p>
 
-      <p>
-        Give her understanding in her studies, courage when
-        challenges arise, peace when she feels worried, and
-        strength to keep moving forward.
-      </p>
+    <p>
+        May her future be filled with testimonies, joy, and opportunities
+        beyond her expectations. Let her never forget that she is precious
+        and that her life has purpose.
+    </p>
 
-      <p>
-        Surround her with people who encourage her to grow.
-        Protect her from discouragement, open the right doors
-        for her, and help her recognise the gifts within herself.
-      </p>
+    <p><strong>Amen. ❤️</strong></p>
 
-      <p>
-        May her future be filled with purpose, meaningful
-        opportunities, good health, and genuine happiness.
-        May she always remember that she is precious and loved.
-      </p>
-
-      <p><strong>Amen. 💜</strong></p>
-    </section>
-
-    <section class="card">
-      <h2>💜 One Last Thing, Betty...</h2>
-
-      <p>
-        As you move into the next chapter of your life,
-        carry hope in your heart and courage in your spirit.
-        You may not see the whole picture yet, but that
-        doesn't mean something beautiful isn't taking shape.
-      </p>
-
-      <p>
-        Keep becoming. Keep believing. Keep being the
-        wonderful person you are.
-      </p>
-
-      <p>
-        This little surprise is a reminder that someone is
-        cheering you on and wishing you the very best.
-      </p>
-
-      <br>
-
-      <p>With love, prayers, and warm wishes,</p>
-
-      <h2>Aunty Yetunde &amp; Bro Triumph ❤️</h2>
-
-      <p>You are loved more than you know. 🌷</p>
-    </section>
-
-  </div>
-</main>
+    <div class="signature">
+        With love,<br>
+        Aunty Yetunde & Bro Triumph ❤️
+    </div>
+</section>
 
 <footer>
-  <p>Made with love, especially for Betty.</p>
-  <p class="heart">💜 🌷 💌 🌷 💜</p>
+    Made with love, encouragement, and a little purple magic. 💜<br>
+    Betty, keep shining. Your story is still unfolding. ✨
 </footer>
 
 <script>
 function openLetter() {
-  document.getElementById("welcome").style.display = "none";
+    const letter = document.getElementById("letter");
+    letter.classList.toggle("show");
 
-  document.getElementById("surprise").style.display = "block";
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+    if (letter.classList.contains("show")) {
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    }
 }
 
-function toggleNote(id) {
-  const note = document.getElementById(id);
-
-  if (note.style.display === "block") {
-    note.style.display = "none";
-  } else {
-    note.style.display = "block";
-  }
+function toggleCard(card) {
+    card.classList.toggle("open");
 }
+
+function createHeart() {
+    const heart = document.createElement("span");
+    heart.className = "heart";
+
+    const hearts = ["💜", "💗", "💕", "❤️", "✨"];
+    heart.textContent = hearts[
+        Math.floor(Math.random() * hearts.length)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (14 + Math.random() * 17) + "px";
+
+    const duration = 5 + Math.random() * 5;
+    heart.style.animationDuration = duration + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+}
+
+setInterval(createHeart, 900);
 </script>
 
 </body>
