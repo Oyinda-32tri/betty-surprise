@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Betty 💜</title>
 
 <style>
@@ -10,6 +11,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -25,8 +30,8 @@ header {
 }
 
 h1 {
-  color: #8c59b8;
-  font-size: 2.4rem;
+  color: #9257b8;
+  font-size: clamp(2rem, 7vw, 3rem);
   margin-bottom: 10px;
 }
 
@@ -41,17 +46,17 @@ p {
 
 .container {
   width: 92%;
-  max-width: 750px;
+  max-width: 800px;
   margin: auto;
 }
 
 .card {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ead9fa;
   border-radius: 22px;
   padding: 25px;
   margin: 22px 0;
-  box-shadow: 0 8px 25px rgba(130, 80, 160, 0.10);
+  box-shadow: 0 8px 25px rgba(130, 80, 160, 0.1);
 }
 
 button {
@@ -59,19 +64,15 @@ button {
   color: white;
   border: none;
   border-radius: 30px;
-  padding: 13px 24px;
+  padding: 13px 22px;
   font-size: 1rem;
   cursor: pointer;
-  margin: 12px 5px;
+  margin: 10px 5px;
+  font-family: inherit;
 }
 
 button:hover {
   background: #8653ad;
-}
-
-#surprise {
-  display: none;
-  animation: appear 1s ease;
 }
 
 .envelope {
@@ -81,29 +82,47 @@ button:hover {
   animation: float 2s infinite ease-in-out;
 }
 
+#surprise {
+  display: none;
+  animation: appear 1s ease;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.gallery-item {
+  background: #fff5fb;
+  padding: 8px;
+  border-radius: 18px;
+  border: 1px solid #ead9fa;
+  box-shadow: 0 5px 15px rgba(130, 80, 160, 0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+  border-radius: 13px;
+}
+
+.caption {
+  font-size: 0.95rem;
+  padding: 8px 2px;
+  color: #8653ad;
+}
+
 .hidden-message {
   display: none;
   background: #fff5fb;
   border-radius: 15px;
   padding: 18px;
-  margin-top: 15px;
+  margin-top: 10px;
   text-align: left;
-}
-
-.photo-box {
-  border: 2px dashed #c6a3e6;
-  border-radius: 18px;
-  padding: 20px;
-  margin-top: 15px;
-}
-
-#photoPreview {
-  width: 100%;
-  max-height: 350px;
-  object-fit: contain;
-  border-radius: 15px;
-  margin-top: 15px;
-  display: none;
 }
 
 footer {
@@ -113,16 +132,43 @@ footer {
 
 .heart {
   color: #d978ae;
+  font-size: 1.2rem;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes appear {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 20px 15px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item img {
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+  }
 }
 </style>
 </head>
@@ -131,189 +177,242 @@ footer {
 
 <header>
   <p>💜 A LITTLE SURPRISE MADE WITH LOVE 💜</p>
-  <h1>For Betty</h1>
+  <h1>For Betty 🌷</h1>
   <p>Elizabeth, this little corner of the internet is specially for you.</p>
 </header>
 
 <main class="container">
 
-<section class="card" id="welcome">
-  <h2>Someone Has a Message for You 💌</h2>
-  <p>Dear Betty,</p>
-  <p>
-    Sometimes, a few words can remind us how special we are.
-    Today, we have something beautiful to share with you.
-  </p>
+  <section class="card" id="welcome">
+    <h2>Someone Has a Message for You 💌</h2>
 
-  <p>Tap the envelope to open your surprise.</p>
+    <p>Dear Betty,</p>
 
-  <div class="envelope" onclick="openLetter()" role="button"
-       aria-label="Open your surprise" tabindex="0"
-       onkeydown="if(event.key==='Enter'||event.key===' '){openLetter()}">
-    💌
-  </div>
-
-  <br>
-  <button onclick="openLetter()">Open My Surprise 💜</button>
-</section>
-
-<div id="surprise">
-
-<section class="card">
-  <h2>🌷 The Beginning of Something Great 🌷</h2>
-
-  <p>Dear Betty, our precious Elizabeth,</p>
-
-  <p>
-    We want you to know that you are loved, appreciated,
-    and capable of becoming everything you dream of.
-    Never allow a difficult day to convince you that your
-    future is not beautiful.
-  </p>
-
-  <p>
-    You are still growing, learning, and becoming.
-    Every new experience is an opportunity to discover
-    the strength and wonderful potential God has placed in you.
-  </p>
-
-  <p>
-    As you prepare for the next chapter of your life,
-    especially your journey into higher institution,
-    remember that you do not have to know everything today.
-    Take things one step at a time, keep learning,
-    and never be afraid to ask questions.
-  </p>
-
-  <p>
-    We believe in you, Betty. Keep your head up,
-    protect your beautiful heart, and never stop trying.
-  </p>
-
-  <p><strong>You have a beautiful future ahead of you. 💜</strong></p>
-</section>
-
-<section class="card">
-  <h2>💌 Little Notes Just for You</h2>
-
-  <p>Tap each note to reveal your message.</p>
-
-  <button onclick="toggleNote('note1')">When You Feel Tired 🌷</button>
-  <div class="hidden-message" id="note1">
     <p>
-      Rest when you need to, Betty. You don't have to solve
-      everything in one day. Taking a break doesn't mean
-      you're giving up. Gather your strength and try again.
+      Someone has prepared something special to remind you
+      how loved, valued, and precious you are.
     </p>
+
+    <p>Tap the envelope to open your surprise.</p>
+
+    <div
+      class="envelope"
+      onclick="openLetter()"
+      role="button"
+      tabindex="0"
+      aria-label="Open your surprise"
+      onkeydown="if(event.key==='Enter'||event.key===' '){openLetter()}"
+    >💌</div>
+
+    <br>
+
+    <button onclick="openLetter()">Open My Surprise 💜</button>
+  </section>
+
+  <div id="surprise">
+
+    <section class="card">
+      <h2>🌷 The Beginning of Something Great 🌷</h2>
+
+      <p>Dear Betty, our precious Elizabeth,</p>
+
+      <p>
+        We want you to know that you are loved, appreciated,
+        and capable of becoming everything you dream of.
+        Never allow a difficult day to convince you that
+        your future is not beautiful.
+      </p>
+
+      <p>
+        You are still growing, learning, and becoming.
+        Every new experience is an opportunity to discover
+        the strength and wonderful potential God has placed in you.
+      </p>
+
+      <p>
+        As you prepare for the next chapter of your life,
+        especially your journey into higher institution,
+        remember that you do not have to know everything today.
+        Take things one step at a time, keep learning,
+        and never be afraid to ask questions.
+      </p>
+
+      <p>
+        We believe in you, Betty. Keep your head up,
+        protect your beautiful heart, and never stop trying.
+      </p>
+
+      <p><strong>You have a beautiful future ahead of you. 💜</strong></p>
+    </section>
+
+    <section class="card">
+      <h2>📸 Our Beautiful Memories 📸</h2>
+
+      <p>
+        Every picture holds a memory, and every memory
+        is a little reminder of the people and moments
+        that make life beautiful.
+      </p>
+
+      <p>
+        Betty, we hope these pictures bring a smile
+        to your face whenever you visit this page. 💗
+      </p>
+
+      <div class="gallery">
+
+        <div class="gallery-item">
+          <img
+            src="images.jpg"
+            alt="A special memory"
+            loading="lazy"
+          >
+          <p class="caption">A memory to treasure 💜</p>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="image2.jpg"
+            alt="Another beautiful memory"
+            loading="lazy"
+          >
+          <p class="caption">Beautiful moments 🌷</p>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="image3.png"
+            alt="A precious memory"
+            loading="lazy"
+          >
+          <p class="caption">Always worth remembering ❤️</p>
+        </div>
+
+      </div>
+
+      <p>
+        <em>
+          May the beautiful moments of today become
+          wonderful stories to tell tomorrow.
+        </em>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>💌 Little Notes Just for You</h2>
+
+      <p>Tap each button to reveal your message.</p>
+
+      <button onclick="toggleNote('note1')">
+        When You Feel Tired 🌷
+      </button>
+
+      <div class="hidden-message" id="note1">
+        <p>
+          Rest when you need to, Betty. You don't have to
+          solve everything in one day. Taking a break doesn't
+          mean you're giving up. Gather your strength and try again.
+        </p>
+      </div>
+
+      <button onclick="toggleNote('note2')">
+        When You Doubt Yourself ✨
+      </button>
+
+      <div class="hidden-message" id="note2">
+        <p>
+          You are more capable than you sometimes realise.
+          Don't compare your journey with anyone else's.
+          Your pace is your pace, and your story is still unfolding.
+        </p>
+      </div>
+
+      <button onclick="toggleNote('note3')">
+        For Your School Journey 📚
+      </button>
+
+      <div class="hidden-message" id="note3">
+        <p>
+          May your mind be sharp, your determination strong,
+          and your efforts fruitful. Study consistently,
+          choose good friends, and remember why you started.
+          Your dreams are worth working for.
+        </p>
+      </div>
+
+      <button onclick="toggleNote('note4')">
+        A Reminder of Love 💗
+      </button>
+
+      <div class="hidden-message" id="note4">
+        <p>
+          You matter. Your feelings matter. Your dreams matter.
+          You don't have to be perfect to deserve love,
+          kindness, encouragement, and support.
+        </p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>🙏 A Prayer for Elizabeth</h2>
+
+      <p>
+        Heavenly Father, thank You for Betty and for the gift
+        of her life. Please guide her steps and give her wisdom
+        as she enters new seasons of growth and learning.
+      </p>
+
+      <p>
+        Give her understanding in her studies, courage when
+        challenges arise, peace when she feels worried, and
+        strength to keep moving forward.
+      </p>
+
+      <p>
+        Surround her with people who encourage her to grow.
+        Protect her from discouragement, open the right doors
+        for her, and help her recognise the gifts within herself.
+      </p>
+
+      <p>
+        May her future be filled with purpose, meaningful
+        opportunities, good health, and genuine happiness.
+        May she always remember that she is precious and loved.
+      </p>
+
+      <p><strong>Amen. 💜</strong></p>
+    </section>
+
+    <section class="card">
+      <h2>💜 One Last Thing, Betty...</h2>
+
+      <p>
+        As you move into the next chapter of your life,
+        carry hope in your heart and courage in your spirit.
+        You may not see the whole picture yet, but that
+        doesn't mean something beautiful isn't taking shape.
+      </p>
+
+      <p>
+        Keep becoming. Keep believing. Keep being the
+        wonderful person you are.
+      </p>
+
+      <p>
+        This little surprise is a reminder that someone is
+        cheering you on and wishing you the very best.
+      </p>
+
+      <br>
+
+      <p>With love, prayers, and warm wishes,</p>
+
+      <h2>Aunty Yetunde &amp; Bro Triumph ❤️</h2>
+
+      <p>You are loved more than you know. 🌷</p>
+    </section>
+
   </div>
-
-  <button onclick="toggleNote('note2')">When You Doubt Yourself ✨</button>
-  <div class="hidden-message" id="note2">
-    <p>
-      You are more capable than you sometimes realise.
-      Don't compare your journey with anyone else's.
-      Your pace is your pace, and your story is still unfolding.
-    </p>
-  </div>
-
-  <button onclick="toggleNote('note3')">For Your School Journey 📚</button>
-  <div class="hidden-message" id="note3">
-    <p>
-      May your mind be sharp, your determination strong,
-      and your efforts fruitful. Ask questions, study consistently,
-      choose good friends, and remember why you started.
-      Your dreams are worth working for.
-    </p>
-  </div>
-
-  <button onclick="toggleNote('note4')">A Reminder of Love 💗</button>
-  <div class="hidden-message" id="note4">
-    <p>
-      You matter. Your feelings matter. Your dreams matter.
-      You don't have to be perfect to be worthy of love,
-      kindness, encouragement, and support.
-    </p>
-  </div>
-</section>
-
-<section class="card">
-  <h2>📸 Our Little Memory Corner</h2>
-
-  <p>
-    If you have a favourite picture or a beautiful memory
-    you would like to keep close, you can preview it here.
-  </p>
-
-  <div class="photo-box">
-    <input type="file" accept="image/*" onchange="showPhoto(event)">
-    <img id="photoPreview" alt="Your selected memory">
-    <p><small>
-      Note: This preview is visible only on the device where
-      the picture is selected. It is not uploaded to the website.
-    </small></p>
-  </div>
-</section>
-
-<section class="card">
-  <h2>🙏 A Prayer for Elizabeth</h2>
-
-  <p>
-    Heavenly Father, thank You for Betty and for the gift
-    of her life. Please guide her steps and give her wisdom
-    as she enters new seasons of growth and learning.
-  </p>
-
-  <p>
-    Give her understanding in her studies, courage when
-    challenges arise, peace when she feels worried, and
-    the strength to keep moving forward.
-  </p>
-
-  <p>
-    Surround her with people who encourage her to grow.
-    Protect her from discouragement, open the right doors
-    for her, and help her recognise the gifts within herself.
-  </p>
-
-  <p>
-    May her future be filled with purpose, meaningful
-    opportunities, good health, and genuine happiness.
-    May she always remember that she is precious and loved.
-  </p>
-
-  <p><strong>Amen. 💜</strong></p>
-</section>
-
-<section class="card">
-  <h2>💜 One Last Thing, Betty...</h2>
-
-  <p>
-    As you move into the next chapter of your life,
-    carry hope in your heart and courage in your spirit.
-    You may not see the whole picture yet, but that doesn't
-    mean something beautiful isn't taking shape.
-  </p>
-
-  <p>
-    Keep becoming. Keep believing. Keep being the wonderful
-    person you are.
-  </p>
-
-  <p>
-    This little surprise is a reminder that someone is
-    cheering you on and wishing you the very best.
-  </p>
-
-  <br>
-
-  <p>With love, prayers, and warm wishes,</p>
-
-  <h2>Aunty Yetunde & Bro Triumph ❤️</h2>
-
-  <p>You are loved more than you know. 🌷</p>
-</section>
-
-</div>
 </main>
 
 <footer>
@@ -324,8 +423,13 @@ footer {
 <script>
 function openLetter() {
   document.getElementById("welcome").style.display = "none";
+
   document.getElementById("surprise").style.display = "block";
-  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
 function toggleNote(id) {
@@ -335,16 +439,6 @@ function toggleNote(id) {
     note.style.display = "none";
   } else {
     note.style.display = "block";
-  }
-}
-
-function showPhoto(event) {
-  const file = event.target.files[0];
-
-  if (file && file.type.startsWith("image/")) {
-    const preview = document.getElementById("photoPreview");
-    preview.src = URL.createObjectURL(file);
-    preview.style.display = "block";
   }
 }
 </script>
